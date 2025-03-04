@@ -24,7 +24,7 @@ public class AddressBookController {
     }
 
     @GetMapping
-    public ResponseEntity<Map<Long, AddressBookEntry>> getAllEntries() {
+    public ResponseEntity<List<AddressBookEntry>> getAllEntries() {
         return ResponseEntity.ok(addressBookService.getAllEntries());
     }
 
