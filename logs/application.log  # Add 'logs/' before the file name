@@ -17,3 +17,5 @@
 2025-03-04T11:31:52.440+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-1] c.t.a.service.AddressBookService         : Fetching all address book entries.
 2025-03-04T11:31:56.554+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-3] c.t.a.service.AddressBookService         : THis is my entryAddressBookEntry(id=1, name=Ankit  G, address=123  Maihar, phone=9876543310, email=ankitgangwani)
 2025-03-04T11:32:30.046+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-4] c.t.a.service.AddressBookService         : THis is my entryAddressBookEntry(id=2, name=Ankit  G, address=123  Maihar, phone=987654, email=ankitgangwani)
+2025-03-04T11:43:59.637+05:30  INFO 11656 --- [AddressBook] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-04T11:43:59.658+05:30  INFO 11656 --- [AddressBook] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
