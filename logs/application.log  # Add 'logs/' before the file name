@@ -7,7 +7,7 @@
 2025-03-04T11:31:50.528+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
 2025-03-04T11:31:50.528+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
 2025-03-04T11:31:50.580+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-03-04T11:31:50.582+05:30  INFO 11656 --- [AddressBook] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1525 ms
+2025-03-04T11:31:50.582+05:30  INFO 11656 --- [AddressBook] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initializatiogitn completed in 1525 ms
 2025-03-04T11:31:51.109+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
 2025-03-04T11:31:51.156+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-03-04T11:31:51.175+05:30  INFO 11656 --- [AddressBook] [restartedMain] c.t.addressbook.AddressBookApplication   : Started AddressBookApplication in 3.004 seconds (process running for 3.894)
