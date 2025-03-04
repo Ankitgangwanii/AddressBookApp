@@ -1,61 +1,51 @@
 
 package com.tit.addressbook.controller;
 
-
+import com.tit.addressbook.dto.AddressBookDTO;
+import com.tit.addressbook.model.AddressBookEntry;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/addressbook")
 public class AddressBookController {
-    Map<Integer,String> addressMap;
-    // Constructor
-    public AddressBookController(){
-        addressMap = new HashMap<>();
+    private Map<Long, AddressBookEntry> entries = new HashMap<>();
+    private long idCounter = 1;
 
+    @PostMapping
+    public ResponseEntity<String> createEntry(@RequestBody AddressBookDTO dto) {
+        AddressBookEntry entry = new AddressBookEntry(idCounter, dto.getName(), dto.getAddress(), dto.getPhone(), dto.getEmail());
+        entries.put(idCounter, entry);
+        return ResponseEntity.ok("Entry created with ID: " + idCounter++);
     }
-    @GetMapping("/")
-    public ResponseEntity<Map<Integer,String>> getAllAddress(){
-        return ResponseEntity.ok(addressMap);
+
+    @GetMapping
+    public ResponseEntity<Map<Long, AddressBookEntry>> getAllEntries() {
+        return ResponseEntity.ok(entries);
     }
-    // method to get address by id
-    @GetMapping("/get/{id}")
-    public ResponseEntity<String> getAddressById(@PathVariable int id){
-        if(addressMap.containsKey(id)){
-            String address = addressMap.get(id);
-            return ResponseEntity.ok(address);
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AddressBookEntry> getEntryById(@PathVariable Long id) {
+        return entries.containsKey(id) ? ResponseEntity.ok(entries.get(id)) : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateEntry(@PathVariable Long id, @RequestBody AddressBookDTO dto) {
+        if (entries.containsKey(id)) {
+            AddressBookEntry entry = new AddressBookEntry(id, dto.getName(), dto.getAddress(), dto.getPhone(), dto.getEmail());
+            entries.put(id, entry);
+            return ResponseEntity.ok("Entry updated");
         }
-        return ResponseEntity.ok("id not found");
+        return ResponseEntity.notFound().build();
     }
-    //method to post address
-    @PostMapping("/post")
-    public ResponseEntity<String> postAddress(@RequestParam int id,
-                                              @RequestParam String address){
-        addressMap.put(id,address);
-        return ResponseEntity.ok("address stored successfully");
-    }
-    //method to put address
-    @PutMapping("/put")
-    public ResponseEntity<String> putAddress(@RequestParam int id,
-                                             @RequestParam String address){
-        //check if id present
-        if(!addressMap.containsKey(id)){
-            return ResponseEntity.ok("id not found");
-        }
-        addressMap.put(id,address);
-        return ResponseEntity.ok("address updated successfully");
-    }
-    //method to delete address
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteAddress(@RequestParam int id){
-        //check if id present
-        if(!addressMap.containsKey(id)){
-            return ResponseEntity.ok("id not found");
-        }
-        addressMap.remove(id);
-        return ResponseEntity.ok("address deleted successfully");
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteEntry(@PathVariable Long id) {
+        return entries.remove(id) != null ? ResponseEntity.ok("Entry deleted") : ResponseEntity.notFound().build();
     }
 }
