@@ -1,0 +1,19 @@
+2025-03-04T11:31:48.960+05:30  INFO 11656 --- [AddressBook] [restartedMain] c.t.addressbook.AddressBookApplication   : Starting AddressBookApplication using Java 23.0.2 with PID 11656 (C:\Users\ankitgangwani\OneDrive\Desktop\BridgeLab\AddressBook\target\classes started by ankitgangwani197219 in C:\Users\ankitgangwani\OneDrive\Desktop\BridgeLab\AddressBook)
+2025-03-04T11:31:48.960+05:30 DEBUG 11656 --- [AddressBook] [restartedMain] c.t.addressbook.AddressBookApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-03-04T11:31:48.969+05:30  INFO 11656 --- [AddressBook] [restartedMain] c.t.addressbook.AddressBookApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-04T11:31:49.052+05:30  INFO 11656 --- [AddressBook] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-04T11:31:49.057+05:30  INFO 11656 --- [AddressBook] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-04T11:31:50.508+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-04T11:31:50.528+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-04T11:31:50.528+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-04T11:31:50.580+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-04T11:31:50.582+05:30  INFO 11656 --- [AddressBook] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initializatiogitn completed in 1525 ms
+2025-03-04T11:31:51.109+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-04T11:31:51.156+05:30  INFO 11656 --- [AddressBook] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-04T11:31:51.175+05:30  INFO 11656 --- [AddressBook] [restartedMain] c.t.addressbook.AddressBookApplication   : Started AddressBookApplication in 3.004 seconds (process running for 3.894)
+2025-03-04T11:31:52.380+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-04T11:31:52.380+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-04T11:31:52.380+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-03-04T11:31:52.440+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-1] c.t.a.service.AddressBookService         : Fetching all address book entries.
+2025-03-04T11:31:56.554+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-3] c.t.a.service.AddressBookService         : THis is my entryAddressBookEntry(id=1, name=Ankit  G, address=123  Maihar, phone=9876543310, email=ankitgangwani)
+2025-03-04T11:32:30.046+05:30  INFO 11656 --- [AddressBook] [http-nio-8080-exec-4] c.t.a.service.AddressBookService         : THis is my entryAddressBookEntry(id=2, name=Ankit  G, address=123  Maihar, phone=987654, email=ankitgangwani)
