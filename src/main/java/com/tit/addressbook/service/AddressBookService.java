@@ -1,17 +1,15 @@
 package com.tit.addressbook.service;
-
 import com.tit.addressbook.dto.AddressBookDTO;
+import com.tit.addressbook.exception.AddressBookNotFoundException;
 import com.tit.addressbook.model.AddressBookEntry;
 import com.tit.addressbook.repository.AddressBookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-
+import java.util.*;
 @Slf4j
 @Service
 public class AddressBookService {
+
     private final AddressBookRepository addressBookRepository;
 
     public AddressBookService(AddressBookRepository addressBookRepository) {
@@ -21,7 +19,7 @@ public class AddressBookService {
     public String createEntry(AddressBookDTO dto) {
         AddressBookEntry entry = new AddressBookEntry(null, dto.getName(), dto.getAddress(), dto.getPhone(), dto.getEmail());
         AddressBookEntry savedEntry = addressBookRepository.save(entry);
-        log.info("New entry created: {}", savedEntry);
+        log.info("New entry created with ID: {}", savedEntry.getId());
         return "Entry created with ID: " + savedEntry.getId();
     }
 
@@ -31,28 +29,30 @@ public class AddressBookService {
     }
 
     public AddressBookEntry getEntryById(Long id) {
-        return addressBookRepository.findById(id).orElse(null);
+        log.info("Fetching entry with ID: {}", id);
+        return addressBookRepository.findById(id)
+                .orElseThrow(() -> new AddressBookNotFoundException("Address Book ID " + id + " not found."));
     }
 
     public String updateEntry(Long id, AddressBookDTO dto) {
-        Optional<AddressBookEntry> optionalEntry = addressBookRepository.findById(id);
-        if (optionalEntry.isPresent()) {
-            AddressBookEntry entry = optionalEntry.get();
-            entry.setName(dto.getName());
-            entry.setAddress(dto.getAddress());
-            entry.setPhone(dto.getPhone());
-            entry.setEmail(dto.getEmail());
-            addressBookRepository.save(entry);
-            return "Entry updated";
-        }
-        return null;
+        AddressBookEntry entry = addressBookRepository.findById(id)
+                .orElseThrow(() -> new AddressBookNotFoundException("Address Book ID " + id + " not found."));
+
+        entry.setName(dto.getName());
+        entry.setAddress(dto.getAddress());
+        entry.setPhone(dto.getPhone());
+        entry.setEmail(dto.getEmail());
+        addressBookRepository.save(entry);
+        log.info("Entry with ID {} updated successfully", id);
+        return "Entry updated";
     }
 
     public String deleteEntry(Long id) {
-        if (addressBookRepository.existsById(id)) {
-            addressBookRepository.deleteById(id);
-            return "Entry deleted";
+        if (!addressBookRepository.existsById(id)) {
+            throw new AddressBookNotFoundException("Address Book ID " + id + " not found.");
         }
-        return null;
+        addressBookRepository.deleteById(id);
+        log.info("Entry with ID {} deleted successfully", id);
+        return "Entry deleted";
     }
 }
