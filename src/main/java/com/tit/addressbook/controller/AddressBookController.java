@@ -1,11 +1,10 @@
+
 package com.tit.addressbook.controller;
 
 import com.tit.addressbook.dto.AddressBookDTO;
 import com.tit.addressbook.model.AddressBookEntry;
 import com.tit.addressbook.service.AddressBookService;
 import org.springframework.http.ResponseEntity;
-import java.util.HashMap;
-import java.util.Map;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -20,7 +19,8 @@ public class AddressBookController {
 
     @PostMapping
     public ResponseEntity<String> createEntry(@RequestBody AddressBookDTO dto) {
-        return ResponseEntity.ok(addressBookService.createEntry(dto));
+        String response = addressBookService.createEntry(dto);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping
