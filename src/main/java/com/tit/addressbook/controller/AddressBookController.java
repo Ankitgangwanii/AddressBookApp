@@ -1,13 +1,15 @@
 
 package com.tit.addressbook.controller;
-
 import com.tit.addressbook.dto.AddressBookDTO;
 import com.tit.addressbook.model.AddressBookEntry;
 import com.tit.addressbook.service.AddressBookService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+@Validated
 @RestController
 @RequestMapping("/addressbook")
 public class AddressBookController {
@@ -18,7 +20,7 @@ public class AddressBookController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createEntry(@RequestBody AddressBookDTO dto) {
+    public ResponseEntity<String> createEntry(@Valid @RequestBody AddressBookDTO dto) {
         String response = addressBookService.createEntry(dto);
         return ResponseEntity.ok(response);
     }
@@ -35,7 +37,7 @@ public class AddressBookController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateEntry(@PathVariable Long id, @RequestBody AddressBookDTO dto) {
+    public ResponseEntity<String> updateEntry(@PathVariable Long id, @Valid @RequestBody AddressBookDTO dto) {
         String response = addressBookService.updateEntry(id, dto);
         return response != null ? ResponseEntity.ok(response) : ResponseEntity.notFound().build();
     }
